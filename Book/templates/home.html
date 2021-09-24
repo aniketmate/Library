@@ -1,0 +1,122 @@
+<html>
+<head>
+    
+    <title style="background-color: rgb(68, 65, 197);">HOME PAGE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body style="background-color: gold;">
+  <centre>
+<h2 style="text-align:center;color: firebrick;">Book Registration</h2><hr>
+    <form action="{% url 'home' %}" method="POST">
+    {% csrf_token %}
+    {% if single_book %}
+    <div class="mb-3 col-sm-3">
+    <label class="form-label">Book ID</label>
+    <input type="number" class="form-control"value="{{single_book.id}}"readonly name="id">      </div>
+    <!-- Book ID: <input type="text" name="id" value="{{single_book.id}}"><br><br> --> 
+    {% endif %}
+    
+    <div class="mb-3 col-sm-3" >
+      
+    <label class="form-label">Book Name</label>
+          <input type="text"  class="form-control"value="{{single_book.name}}"name="nm"placeholder="Enter Book Name">
+        
+        </div>
+        <div class="mb-3 col-sm-3">
+            <label class="form-label">Book Qty</label>
+            <input type="number" class="form-control"value="{{single_book.qty}}"name="qty">
+            <div class="mb-3 col-sm-3">
+                <label class="form-label">Book Price</label>
+                <input type="text" class="form-control"value="{{single_book.price}}"name="price">
+                {% if single_book.is_published %}
+                <div class="form-check">
+                    <input class="form-check-input" type="radio"name="ispub" value = "Yes" checked >
+                    <label class="form-check-label">
+                      Yes
+                    </label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ispub" value = "No" >
+                        <label class="form-check-label">
+                          No
+                        </label>
+                    {% else %}
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="ispub" value = "Yes">
+                        <label class="form-check-label">
+                          Yes
+                        </label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"name="ispub" value = "No"checked >
+                            <label class="form-check-label">
+                              No
+                            </label>
+                  {% endif %}
+
+                  
+
+        {% if single_book %}
+        <button type="submit" class="btn btn-success">Update Book</button><nbsp></nbsp>
+        {% else %}
+        <button type="submit" class="btn btn-success"style="width: 150;">Add Book</button><nbsp></nbsp>
+        {% endif %}
+
+        <!-- <div class="mb-3 max-content" style="width:max-content">
+        <label for="formFile" class="form-label">Default file input example</label>
+        <input class="form-control" type="file" id="formFile">
+        </div> -->
+
+
+        
+    
+      </form> 
+
+<!-- <form action="/homepage/" method="POST">
+    {% csrf_token %}
+    {% if single_book %}
+    Book ID: <input type="text" name="id" value="{{single_book.id}}"><br><br>
+    {% endif %}
+    Book Name:  <input type="text" name="nm" value="{{single_book.name}}"><br><br>
+    Book Qty:   <input type="number" name="qty" value="{{single_book.qty}}"><br><br>
+    Book Price: <input type="number" name="price" value="{{single_book.price}}"><br><br>
+    {% if single_book.is_published %}
+    Is_Published:Yes<input type="radio" name="ispub" value="Yes" checked> No<input type="radio" name="ispub" value="No"><br><br>
+    {% else %}
+    Is_Published:Yes<input type="radio" name="ispub" value="Yes" > No<input type="radio" name="ispub" value="No" checked><br><br>
+    {% endif %}
+    {% if single_book %}
+    <input type="Submit" value="Update Book">
+    {% else %}
+    <input type="Submit" value="Add Book">
+    {% endif %} -->
+
+
+<!-- </form> -->
+   
+<!-- <a href="/show-books/">Show Books</a> -->
+
+<a href="{% url 'showbook'%}"class="btn btn-info"style="width: 150;" >Show Books</a>
+
+<!-- <button type="showbook" class="btn btn-warn">Show Books</button><br> -->
+
+</centre>
+
+</body>
+
+
+
+
+
+
+
+
+</html>
+
+
+ <!-- <h1>HI</h1>
+<h2>HI</h2>
+<h3>HI</h3>
+<h4>HI</h4> -->
+
+
+<!-- <p style="color:rgb(247, 205, 22);">This is a red paragraph.</p> -->
+<!-- <a href="https://www.w3schools.com">This is a link</a> -->
